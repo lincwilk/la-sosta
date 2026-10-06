@@ -19,3 +19,4 @@ mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
  mobileNav.classList.remove('open');
  menuToggle.setAttribute('aria-expanded','false');
 }));
+window.LA_SOSTA_MENUS=menus;
