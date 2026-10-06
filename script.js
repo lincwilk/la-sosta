@@ -9,14 +9,5 @@ hamburger:["Panino Cheeseburger","Panino La Sosta","Panino La Svolta"],
 contorni:["Insalata verde","Insalata mista","Patatine* fritte","Spinaci* al burro / lessi","Zucchine fritte","Verdure grigliate"],
 dolci:["Sorbetto al limone","Tartufo bianco o nero","Dolci della casa","Altri dolci della casa"],
 vini:["Moscato d’Asti DOCG","Erbaluce di Caluso DOCG “Fior di ghiaccio”","Langhe Barbera DOC","Roero Arneis DOCG","Roero Arneis DOCG","Prosecco di Treviso Rosato","Kreos Rosato Salento IGT","Prosecco DOCG Superiore Extra Dry","Muller Thurgau Trentino DOC","Pecorino DOC Offida “Veronica”","Falanghina Taburno DOC","Greco Sannio DOC","Kikè Sicilia IGT","Gewürztraminer DOC","Pinot Nero Trentino DOC","Ruché di Castagnole Monf. to “La Tradizione”","Nebbiolo d’Alba SUP. “Cianin da Stiva”"]};
-function render(cat){document.querySelectorAll('.menu-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));const list=menus[cat].slice().sort((a,b)=>{const o=menuOrder[cat]||[];return (o.indexOf(a[0])<0?999:o.indexOf(a[0]))-(o.indexOf(b[0])<0?999:o.indexOf(b[0]));});document.getElementById('menu-grid').innerHTML=list.map(([n,d,p])=>'<article class="menu-item"><div><h3>'+n+'</h3>'+(d?'<p>'+d+'</p>':'')+'</div><div class="price">€ '+p+'</div></article>').join('')}document.querySelectorAll('.menu-tabs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.cat)));render('pizze');document.getElementById('year').textContent=new Date().getFullYear();const menuToggle=document.querySelector('.menu-toggle');
-const mobileNav=document.querySelector('.desktop-nav');
-menuToggle.addEventListener('click',()=>{
- const open=mobileNav.classList.toggle('open');
- menuToggle.setAttribute('aria-expanded',String(open));
-});
-mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
- mobileNav.classList.remove('open');
- menuToggle.setAttribute('aria-expanded','false');
-}));
+function render(cat){document.querySelectorAll('.menu-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));const list=menus[cat].slice().sort((a,b)=>{const o=menuOrder[cat]||[];return (o.indexOf(a[0])<0?999:o.indexOf(a[0]))-(o.indexOf(b[0])<0?999:o.indexOf(b[0]));});document.getElementById('menu-grid').innerHTML=list.map(([n,d,p])=>'<article class="menu-item"><div><h3>'+n+'</h3>'+(d?'<p>'+d+'</p>':'')+'</div><div class="price">€ '+p+'</div></article>').join('')}if(document.getElementById('menu-grid')){document.querySelectorAll('.menu-tabs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.cat)));render('pizze');document.getElementById('year').textContent=new Date().getFullYear();const menuToggle=document.querySelector('.menu-toggle');const mobileNav=document.querySelector('.desktop-nav');if(menuToggle&&mobileNav){menuToggle.addEventListener('click',()=>{const open=mobileNav.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));});mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileNav.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');}));}}
 window.LA_SOSTA_MENUS=menus;
