@@ -39,3 +39,8 @@ background-size:auto,34px 34px,34px 34px}
  .map-placeholder{padding:28px 22px}
  .map-placeholder strong{font-size:34px}
 }
+
+/* Explicit map CTA contrast */
+#load-map{background:var(--wine);color:#fff;border-color:var(--wine);display:inline-flex!important;visibility:visible!important;opacity:1!important;}
+#load-map:hover{background:var(--wine2);color:#fff;}
+#load-map:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
