@@ -104,6 +104,13 @@ function applyLanguage(lang){
  const active=document.querySelector('.menu-tabs button.active');
  render(active?active.dataset.cat:"pizze");
 }
-document.querySelectorAll('.language-menu [data-lang]').forEach(btn=>btn.addEventListener('click',()=>{applyLanguage(btn.dataset.lang);document.querySelector('.language-menu').classList.remove('open');document.querySelector('.language-btn').setAttribute('aria-expanded','false');}));
-document.querySelector('.language-btn').addEventListener('click',()=>{const open=document.querySelector('.language-menu').classList.toggle('open');document.querySelector('.language-btn').setAttribute('aria-expanded',String(open));});
+const languageSwitcher=document.querySelector('.language-switcher');
+const languageButton=document.querySelector('.language-btn');
+const languageMenu=document.querySelector('.language-menu');
+document.addEventListener('click',(event)=>{
+ const choice=event.target.closest('.language-menu [data-lang]');
+ if(choice){event.preventDefault();event.stopPropagation();applyLanguage(choice.dataset.lang);languageMenu.classList.remove('open');languageButton.setAttribute('aria-expanded','false');return;}
+ if(event.target.closest('.language-btn')){event.preventDefault();event.stopPropagation();const open=!languageMenu.classList.contains('open');languageMenu.classList.toggle('open',open);languageButton.setAttribute('aria-expanded',String(open));return;}
+ if(languageSwitcher&&!languageSwitcher.contains(event.target)){languageMenu.classList.remove('open');languageButton.setAttribute('aria-expanded','false');}
+});
 applyLanguage(activeLang);
