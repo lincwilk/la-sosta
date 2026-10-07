@@ -1,0 +1,9 @@
+window.LA_SOSTA_MENUS={
+pizze:[["Margherita","pomodoro, mozzarella","5,00"],["Marinara","pomodoro, aglio, prezzemolo, origano","4,00"],["Diavola","pomodoro, mozzarella, salame piccante","8,00"],["Bufala","pomodoro, mozzarella di bufala","9,00"],["Bresaola","pomodoro, mozzarella, bresaola, rucola, scaglie di parmigiano","11,00"],["La Sosta","mozzarella, pesto di rucola, pomodorino caramellato, acciughe, stracciatella","11,00"]],
+speciali:[["Focaccia bianca","olio, sale","3,50"],["Burrata","mozzarella, burrata, pomodoro fresco, basilico","9,00"],["Italia","mozzarella, pomodorini, rucola, scaglie di parmigiano","8,00"],["’Nduja","pomodoro, mozzarella, ’nduja calabra, scaglie di parmigiano","9,00"]],
+primi:[["Fettuccine al ragù","","9,00"],["Trofie fresche al ligure","pesto di basilico, patate e fagiolini","11,00"],["Spaghetti alla carbonara","","13,00"],["Spaghetti allo scoglio*","","16,00"],["Paella di pesce*","minimo x 4 persone, su prenotazione","20,00 / persona"]],
+secondi:[["Milanese di pollo","","9,00"],["Tagliata di vitello con verdure miste","","17,00"],["Calamaro alla griglia con zucchine, menta e maionese al lime","","14,00"],["Fritto La Sosta (calamari, gamberi, polpo, gamberoni)*","","19,00"]],
+hamburger:[["Panino Cheeseburger","hamburger di fassona, pomodoro, insalata, formaggio e ketchup","13,00"],["Panino La Sosta","hamburger di fassona, pomodoro, insalata, scamorza affumicata, cipolla caramellata e salsa barbecue","15,00"]],
+contorni:[["Insalata verde","","3,00"],["Insalata mista","","4,00"],["Patatine* fritte","","3,50"],["Verdure grigliate","","6,00"]],
+dolci:[["Sorbetto al limone","","3,00"],["Tartufo bianco o nero","","4,00"],["Tiramisù","","4,00"],["Panna cotta","","4,00"]]
+};
