@@ -213,3 +213,10 @@ Object.assign(langData.en,{sea_text:"From grilled octopus to fried seafood and s
 Object.assign(langData.fr,{sea_text:"Du poulpe grillé aux fritures et aux pâtes de la mer, une part importante de notre carte.",sea_text2:"Moules, palourdes et crevettes apportent les saveurs de la mer jusque dans nos plats de pâtes."});
 Object.assign(langData.pl,{sea_text:"Od grillowanej ośmiornicy po smażone owoce morza i makarony z rybami, to ważna część naszej karty.",sea_text2:"Małże, vongole i krewetki przenoszą smaki morza także do naszych dań z makaronem."});
 applyLanguage(activeLang);
+
+
+Object.assign(langData.it,{sea_text:"Dal polpo alla griglia ai fritti di mare, il pesce è una presenza importante sulla nostra carta.",sea_text2:"Cozze, vongole e gamberi portano i sapori del mare anche nei nostri primi piatti."});
+Object.assign(langData.en,{sea_text:"From grilled octopus to fried seafood, fish has an important place on our menu.",sea_text2:"Mussels, clams and prawns bring the flavours of the sea to our pasta dishes."});
+Object.assign(langData.fr,{sea_text:"Du poulpe grillé aux fritures de la mer, le poisson occupe une place importante sur notre carte.",sea_text2:"Moules, palourdes et crevettes apportent les saveurs de la mer jusque dans nos plats de pâtes."});
+Object.assign(langData.pl,{sea_text:"Od grillowanej ośmiornicy po smażone owoce morza — ryby zajmują ważne miejsce w naszej karcie.",sea_text2:"Małże, vongole i krewetki przenoszą smaki morza także do naszych dań z makaronem."});
+applyLanguage(activeLang);
