@@ -71,3 +71,15 @@ background-size:auto,34px 34px,34px 34px}
 .why-grid a:hover{text-decoration:underline}
 @media(max-width:850px){.why-grid{grid-template-columns:repeat(2,1fr)}.why-grid article{min-height:230px}}
 @media(max-width:520px){.why-grid{grid-template-columns:1fr;gap:10px}.why-grid article{min-height:0;padding:26px 22px!important}.why-icon{margin-bottom:20px}}
+
+/* Final CTA refinement */
+.cta{background:var(--paper);color:var(--ink);padding:78px 28px 82px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cta-inner{max-width:900px}
+.cta .eyebrow{color:var(--gold)}
+.cta h2{font-size:68px;color:var(--wine);margin:0 0 12px}
+.cta p{color:var(--muted)}
+.cta .hero-actions{justify-content:center;margin-top:24px}
+.cta .btn-ghost{background:transparent;color:var(--wine);border-color:var(--wine)}
+.cta .btn-ghost:hover{background:var(--wine);color:#fff;border-color:var(--wine)}
+@media(max-width:850px){.cta h2{font-size:58px}}
+@media(max-width:520px){.cta{padding:62px 22px 66px}.cta h2{font-size:50px}}
