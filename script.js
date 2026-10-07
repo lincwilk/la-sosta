@@ -186,3 +186,5 @@ if(mapButton){
    area.innerHTML='<iframe title="La Sosta su Google Maps" src="https://www.google.com/maps?q=La+Sosta%2C+Via+Buriasco+10%2F12%2C+10060+Piscina+TO&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>';
  });
 }
+
+applyLanguage(activeLang);
