@@ -40,23 +40,17 @@ document.getElementById('preorder-items').innerHTML=preorderMenu[cat].map(functi
 updatePreSummary();
 }
 function q(btn,d){
-var b=btn.parentElement.querySelector('b');
-b.textContent=Math.max(0,Number(b.textContent)+d);
-updatePreSummary();
+var row=btn.parentElement.parentElement;var item=row.getAttribute('data-item');var b=row.querySelector('.qty b');var n=Math.max(0,Number(b.textContent)+d);b.textContent=n;window.preorderSelections[item]=n;updatePreSummary();
 }
 function updatePreSummary(){
-var rows=document.querySelectorAll('#preorder-items .qtyrow');
-var a=[];
-rows.forEach(function(row){var n=Number(row.querySelector('.qty b').textContent);if(n)a.push(n+'× '+row.getAttribute('data-item'))});
-var all=state.reservations.find(function(x){return x.id===window.currentPreorderId});
-var summary=document.getElementById('preorder-summary');
-if(summary)summary.textContent=a.length?a.join(' · '):'Nessun articolo selezionato.';
+var a=[];Object.keys(window.preorderSelections||{}).forEach(function(item){var n=Number(window.preorderSelections[item]||0);if(n)a.push(n+'× '+item)});
+var summary=document.getElementById('preorder-summary');if(summary)summary.textContent=a.length?a.join(' · '):'Nessun articolo selezionato.';
 }
 function sendPre(id){
-var r=state.reservations.find(function(x){return x.id===id});
-var a=[];
-document.querySelectorAll('#preorder-items .qtyrow').forEach(function(row){var n=Number(row.querySelector('.qty b').textContent);if(n)a.push(n+'× '+row.getAttribute('data-item'))});
-r.preorder=a.join(', ')||'Nessun articolo selezionato';r.preorderNote=document.getElementById('ponote').value;r.preorderStatus='Ricevuto';save();client()}
+var r=state.reservations.find(function(x){return x.id===id});var a=[];
+Object.keys(window.preorderSelections||{}).forEach(function(item){var n=Number(window.preorderSelections[item]||0);if(n)a.push(n+'× '+item)});
+r.preorder=a.join(', ')||'Nessun articolo selezionato';r.preorderNote=document.getElementById('ponote').value;r.preorderStatus='Ricevuto';save();client();
+}
 function admin(){state.role='admin';save();var all=state.reservations,p=all.filter(function(r){return r.preorderStatus==='Ricevuto'}).length,g=all.filter(function(r){return Number(r.people)>=8}).length;var incoming=all.filter(function(r){return r.preorder});app.innerHTML='<p class="eyebrow">AREA RISTORANTE · DEMO</p><h1>Buonasera, La Sosta.</h1><p class="muted">Dashboard di prova per prenotazioni e pre-ordini.</p>'+tabs('admin')+'<div class="kpis"><div class="kpi"><b>'+all.length+'</b><span>Prenotazioni</span></div><div class="kpi"><b>'+g+'</b><span>Gruppi</span></div><div class="kpi"><b>'+p+'</b><span>Pre-ordini nuovi</span></div><div class="kpi"><b>'+all.filter(function(r){return r.status==='Confermata'}).length+'</b><span>Confermate</span></div></div><section class="panel preorder-panel"><div class="section-head"><div><p class="eyebrow">CUCINA</p><h2>Pre-ordini da preparare</h2></div><span class="muted">'+incoming.length+' pre-ordin'+(incoming.length===1?'o':'i')+'</span></div>'+(incoming.length?incoming.map(function(r){return '<div class="preorder-ticket"><div class="ticket-main"><div><h3>'+esc(r.name)+'</h3><b>'+esc(r.date)+' · '+esc(r.time)+' · '+esc(r.people)+' persone</b><div class="muted">'+esc(r.id)+' · '+esc(r.phone)+'</div></div><span class="status">'+esc(r.preorderStatus||'Ricevuto')+'</span></div><div class="ticket-items">'+esc(r.preorder)+'</div>'+(r.preorderNote?'<div class="ticket-note"><b>Note:</b> '+esc(r.preorderNote)+'</div>':'')+'<div class="actions"><button class="action" onclick="confirmPre(\''+esc(r.id)+'\')">Conferma pre-ordine</button></div></div>'}).join(''):'<p class="muted">Nessun pre-ordine ricevuto.</p>')+'</section><section class="panel"><h2>Agenda de prenotazioni</h2>'+(all.length?all.map(function(r){return '<div class="row"><div class="rowtop"><div><h3>'+esc(r.name)+'</h3><b>'+esc(r.date)+' · '+esc(r.time)+' · '+esc(r.people)+' persone</b><div class="muted">'+esc(r.phone)+' · '+esc(r.note||'')+'</div></div><span class="status">'+esc(r.preorderStatus||r.status)+'</span></div><p class="muted"><b>Pre-ordine:</b> '+(r.preorder?esc(r.preorder):'non ancora inviato')+'</p><div class="actions"><button class="action ghost" onclick="confirmRes(\''+esc(r.id)+'\')">Conferma prenotazione</button></div></div>'}).join(''):'<p class="muted">Nessun dato.</p>')+'</section>'}
 function confirmPre(id){var r=state.reservations.find(function(x){return x.id===id});if(r){r.preorderStatus='Confermato';save();admin()}}
 function confirmRes(id){var r=state.reservations.find(function(x){return x.id===id});if(r){r.status='Confermata';save();admin()}}
