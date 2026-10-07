@@ -201,3 +201,10 @@ Object.assign(langData.en,{why_label_food:"FROM THE KITCHEN",why_label_food2:"TR
 Object.assign(langData.fr,{why_label_food:"EN CUISINE",why_label_food2:"TRADITION",why_label_sea:"SPÉCIALITÉS",why_label_space:"LE LIEU",why_cta:"Voir le menu →",why_cta_space:"Voir le lieu →"});
 Object.assign(langData.pl,{why_label_food:"Z KUCHNI",why_label_food2:"TRADYCJA",why_label_sea:"SPECJAŁY",why_label_space:"LOKAL",why_cta:"Zobacz menu →",why_cta_space:"Zobacz lokal →"});
 applyLanguage(activeLang);
+
+
+Object.assign(langData.it,{dish_eyebrow:"DALLA CUCINA",dish_title:"Una cucina<br><em>da scoprire.</em>",dish_intro:"Carne, pesce e piatti della casa: una selezione per continuare a guardare il menu anche con gli occhi."});
+Object.assign(langData.en,{dish_eyebrow:"FROM THE KITCHEN",dish_title:"A kitchen<br><em>to discover.</em>",dish_intro:"Meat, seafood and house dishes: a selection that lets you explore the menu with your eyes too."});
+Object.assign(langData.fr,{dish_eyebrow:"DEPUIS LA CUISINE",dish_title:"Une cuisine<br><em>à découvrir.</em>",dish_intro:"Viandes, poissons et plats maison : une sélection qui vous permet aussi de découvrir le menu avec les yeux."});
+Object.assign(langData.pl,{dish_eyebrow:"Z KUCHNI",dish_title:"Kuchnia<br><em>do odkrycia.</em>",dish_intro:"Mięsa, ryby i dania domu: wybór, który pozwala odkrywać menu także oczami."});
+applyLanguage(activeLang);
