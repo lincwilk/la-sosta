@@ -195,3 +195,9 @@ Object.assign(langData.en,{locale_eyebrow:"THE VENUE",locale_title:"A place<br><
 Object.assign(langData.fr,{locale_eyebrow:"LE LIEU",locale_title:"Un endroit<br><em>pour se retrouver.</em>",locale_intro:"Des espaces lumineux, des tables pour les groupes et une cuisine de pizzas, viandes et spécialités de la mer.",locale_sala:"La salle",locale_grigliata:"Grillade de poisson"});
 Object.assign(langData.pl,{locale_eyebrow:"LOKAL",locale_title:"Miejsce<br><em>na wspólny czas.</em>",locale_intro:"Jasne wnętrza, stoły dla grup oraz kuchnia z pizzą, mięsem i specjałami z morza.",locale_sala:"Sala restauracyjna",locale_grigliata:"Grillowane ryby"});
 applyLanguage(activeLang);
+
+Object.assign(langData.it,{why_label_food:"DALLA CUCINA",why_label_food2:"TRADIZIONE",why_label_sea:"SPECIALITÀ",why_label_space:"IL LOCALE",why_cta:"Scopri il menu →",why_cta_space:"Vedi il locale →"});
+Object.assign(langData.en,{why_label_food:"FROM THE KITCHEN",why_label_food2:"TRADITION",why_label_sea:"SPECIALTIES",why_label_space:"THE VENUE",why_cta:"Explore the menu →",why_cta_space:"See the venue →"});
+Object.assign(langData.fr,{why_label_food:"EN CUISINE",why_label_food2:"TRADITION",why_label_sea:"SPÉCIALITÉS",why_label_space:"LE LIEU",why_cta:"Voir le menu →",why_cta_space:"Voir le lieu →"});
+Object.assign(langData.pl,{why_label_food:"Z KUCHNI",why_label_food2:"TRADYCJA",why_label_sea:"SPECJAŁY",why_label_space:"LOKAL",why_cta:"Zobacz menu →",why_cta_space:"Zobacz lokal →"});
+applyLanguage(activeLang);
