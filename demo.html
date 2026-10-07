@@ -18,6 +18,7 @@ var key='laSostaStandaloneDemoV1';
 var state;
 try{state=JSON.parse(localStorage.getItem(key)||'null')}catch(e){}
 if(!state)state={role:null,reservations:[{id:'LS-1001',name:'Marco Rossi',phone:'333 1234567',date:'2026-10-10',time:'20:30',people:12,note:'Compleanno',status:'Confermata',preorderStatus:'Ricevuto',preorder:'2× Margherita, 3× Diavola, 1× Bresaola, 1× La Sosta, 2× Fettuccine al ragù, 1× Spaghetti allo scoglio*, 1× Tagliata di vitello',preorderNote:'2 persone vegetariane'}]};
+if(state&&state.reservations&&state.reservations.length){var demo=state.reservations.find(function(x){return x.id==='LS-1001'});if(demo&&demo.preorder==='7 pizze, 2 primi, 1 secondo'){demo.preorder='2× Margherita, 3× Diavola, 1× Bresaola, 1× La Sosta, 2× Fettuccine al ragù, 1× Spaghetti allo scoglio*, 1× Tagliata di vitello';demo.preorderNote=demo.preorderNote||'2 persone vegetariane';save()}}
 var app=document.getElementById('app');
 function save(){try{localStorage.setItem(key,JSON.stringify(state))}catch(e){}}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(m){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[m]})}
