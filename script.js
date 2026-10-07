@@ -208,3 +208,8 @@ Object.assign(langData.en,{dish_eyebrow:"FROM THE KITCHEN",dish_title:"A kitchen
 Object.assign(langData.fr,{dish_eyebrow:"DEPUIS LA CUISINE",dish_title:"Une cuisine<br><em>à découvrir.</em>",dish_intro:"Viandes, poissons et plats maison : une sélection qui vous permet aussi de découvrir le menu avec les yeux."});
 Object.assign(langData.pl,{dish_eyebrow:"Z KUCHNI",dish_title:"Kuchnia<br><em>do odkrycia.</em>",dish_intro:"Mięsa, ryby i dania domu: wybór, który pozwala odkrywać menu także oczami."});
 applyLanguage(activeLang);
+Object.assign(langData.it,{sea_text:"Dal polpo alla griglia ai fritti e alle paste di mare, una parte importante della nostra carta.",sea_text2:"Cozze, vongole e gamberi portano i sapori del mare anche nei nostri primi piatti."});
+Object.assign(langData.en,{sea_text:"From grilled octopus to fried seafood and seafood pasta, an important part of our menu.",sea_text2:"Mussels, clams and prawns bring the flavours of the sea to our pasta dishes too."});
+Object.assign(langData.fr,{sea_text:"Du poulpe grillé aux fritures et aux pâtes de la mer, une part importante de notre carte.",sea_text2:"Moules, palourdes et crevettes apportent les saveurs de la mer jusque dans nos plats de pâtes."});
+Object.assign(langData.pl,{sea_text:"Od grillowanej ośmiornicy po smażone owoce morza i makarony z rybami, to ważna część naszej karty.",sea_text2:"Małże, vongole i krewetki przenoszą smaki morza także do naszych dań z makaronem."});
+applyLanguage(activeLang);
