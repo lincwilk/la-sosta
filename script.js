@@ -188,3 +188,10 @@ if(mapButton){
 }
 
 applyLanguage(activeLang);
+
+
+Object.assign(langData.it,{locale_eyebrow:"IL LOCALE",locale_title:"Un posto<br><em>per stare insieme.</em>",locale_intro:"Spazi luminosi, tavoli per gruppi e una cucina che porta in tavola pizza, carne e specialità di mare.",locale_sala:"La sala",locale_grigliata:"Grigliata di pesce"});
+Object.assign(langData.en,{locale_eyebrow:"THE VENUE",locale_title:"A place<br><em>to gather.</em>",locale_intro:"Bright spaces, tables for groups and a kitchen serving pizza, meat and seafood specialties.",locale_sala:"The dining room",locale_grigliata:"Grilled seafood"});
+Object.assign(langData.fr,{locale_eyebrow:"LE LIEU",locale_title:"Un endroit<br><em>pour se retrouver.</em>",locale_intro:"Des espaces lumineux, des tables pour les groupes et une cuisine de pizzas, viandes et spécialités de la mer.",locale_sala:"La salle",locale_grigliata:"Grillade de poisson"});
+Object.assign(langData.pl,{locale_eyebrow:"LOKAL",locale_title:"Miejsce<br><em>na wspólny czas.</em>",locale_intro:"Jasne wnętrza, stoły dla grup oraz kuchnia z pizzą, mięsem i specjałami z morza.",locale_sala:"Sala restauracyjna",locale_grigliata:"Grillowane ryby"});
+applyLanguage(activeLang);
