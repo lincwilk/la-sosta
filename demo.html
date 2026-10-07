@@ -3,28 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>La Sosta — Area Clienti · Demo</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="demo.css">
+<title>La Sosta — Demo prenotazioni</title>
+<style>
+:root{--cream:#f7f0e4;--paper:#fffaf2;--wine:#651d26;--wine2:#8c3036;--ink:#211b19;--muted:#756a63;--line:#ddcfc0;--gold:#b68a52}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,sans-serif;line-height:1.5}.top{height:74px;background:var(--paper);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}.logo{font-family:Georgia,serif;font-size:34px;font-weight:700;color:var(--wine);text-decoration:none}.badge{font-size:10px;font-weight:800;letter-spacing:.15em;color:var(--wine);border:1px solid var(--wine);padding:7px 10px}.wrap{max-width:1120px;margin:auto;padding:55px 24px 90px}h1,h2,h3{font-family:Georgia,serif;color:var(--wine)}h1{font-size:58px;line-height:.95;margin:0 0 12px}h2{font-size:32px;margin:0 0 10px}h3{font-size:23px;margin:0 0 7px}.eyebrow{font-size:10px;letter-spacing:.22em;font-weight:800;color:var(--gold);margin:0 0 12px}.muted{color:var(--muted);font-size:14px}.panel{background:var(--paper);border:1px solid var(--line);padding:28px;margin-top:20px}.choices{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}.choice,.tab,.qty button,.action{cursor:pointer}.choice{background:#fff;border:1px solid var(--line);padding:22px;text-align:left;font-size:16px;font-weight:700;color:var(--wine)}.choice small{display:block;margin-top:6px;color:var(--muted);font-weight:400}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:25px 0}.tab{border:1px solid var(--line);background:var(--paper);padding:10px 15px;border-radius:30px;font-weight:700;color:var(--muted)}.tab.active,.action{background:var(--wine);color:#fff;border-color:var(--wine)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.form{display:grid;grid-template-columns:1fr 1fr;gap:13px}.form label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}.form .full{grid-column:1/-1}.form input,.form textarea{display:block;width:100%;margin-top:5px;padding:12px;border:1px solid var(--line);background:#fff;font:14px Arial}.form textarea{min-height:85px}.action{border:1px solid var(--wine);padding:12px 18px;font-weight:800}.row{border:1px solid var(--line);background:#fff;padding:17px;margin-top:10px}.rowtop{display:flex;justify-content:space-between;gap:15px}.status{font-size:10px;font-weight:800;text-transform:uppercase;background:#e4eee4;color:#315d35;padding:6px 8px;height:max-content}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpi{background:#fff;border:1px solid var(--line);padding:18px}.kpi b{display:block;font:700 30px Georgia;color:var(--wine)}.kpi span{font-size:10px;text-transform:uppercase;color:var(--muted)}.qtyrow{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding:12px 0}.qty{display:flex;align-items:center;gap:9px}.qty button{width:31px;height:31px;border:1px solid var(--line);background:#fff}.qty b{min-width:20px;text-align:center}.alert{padding:13px 15px;background:#f1e7d9;border-left:3px solid var(--gold);font-size:13px;margin-bottom:18px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.ghost{background:transparent;color:var(--wine)}@media(max-width:700px){.wrap{padding:38px 16px}.top{padding:0 16px}.grid,.choices,.form{grid-template-columns:1fr}.form .full{grid-column:auto}.kpis{grid-template-columns:1fr 1fr}h1{font-size:48px}.rowtop{display:block}.status{display:inline-block;margin-top:8px}}
+</style>
 </head>
-<body class="demo-body">
-<header class="nav">
-  <a class="brand logo-text" href="index.html" aria-label="La Sosta">La Sosta</a>
-  <div class="demo-badge">DEMO · TEST</div>
-  <a class="btn btn-small" href="index.html">Torna al sito</a>
-</header>
-<main id="demo-app">
-  <div class="demo-login">
-    <div class="demo-head">
-      <div>
-        <p class="eyebrow">LA SOSTA · PROTOTIPO</p>
-        <h1>Area demo</h1>
-        <p class="demo-muted">Caricamento…</p>
-      </div>
-    </div>
-  </div>
-</main>
-<script src="demo-menu.js?v=20261007"></script>
-<script src="demo.js?v=20261007"></script>
+<body>
+<header class="top"><a class="logo" href="index.html">La Sosta</a><span class="badge">DEMO · TEST</span></header>
+<main id="app" class="wrap"></main>
+<script>
+(function(){
+var key='laSostaStandaloneDemoV1';
+var state;
+try{state=JSON.parse(localStorage.getItem(key)||'null')}catch(e){}
+if(!state)state={role:null,reservations:[{id:'LS-1001',name:'Marco Rossi',phone:'333 1234567',date:'2026-10-10',time:'20:30',people:12,note:'Compleanno',status:'Confermata',preorderStatus:'Ricevuto',preorder:'7 pizze, 2 primi, 1 secondo',preorderNote:'2 persone vegetariane'}]};
+var app=document.getElementById('app');
+function save(){try{localStorage.setItem(key,JSON.stringify(state))}catch(e){}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(m){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[m]})}
+function home(){app.innerHTML='<p class="eyebrow">LA SOSTA · PROTOTIPO</p><h1>Area demo</h1><p class="muted">Questa è una demo autonoma: non dipende da altri file JavaScript.</p><section class="panel"><h2>Scegli un profilo</h2><p class="muted">Puoi mostrare al ristorante sia l’esperienza del cliente sia quella del personale.</p><div class="choices"><button class="choice" onclick="client()">👤 Cliente demo<small>Marco Rossi · prenotazioni e pre-ordine</small></button><button class="choice" onclick="admin()">🍽️ Ristorante<small>La Sosta · gestione prenotazioni</small></button></div></section>'}
+function tabs(role){return '<div class="tabs"><button class="tab '+(role==='client'?'active':'')+'" onclick="client()">Area cliente</button><button class="tab '+(role==='admin'?'active':'')+'" onclick="admin()">Area ristorante</button><button class="tab" onclick="logout()">Esci</button></div>'}
+function client(){state.role='client';save();var mine=state.reservations.filter(function(r){return r.name==='Marco Rossi'});app.innerHTML='<p class="eyebrow">AREA CLIENTE · DEMO</p><h1>Ciao, Marco.</h1><p class="muted">Gestisci prenotazioni e pre-ordini per gruppi.</p>'+tabs('client')+'<div class="grid"><section class="panel"><h2>Nuova prenotazione</h2><div class="form"><label>Nome<input id="name" value="Marco Rossi"></label><label>Telefono<input id="phone" value="333 1234567"></label><label>Data<input id="date" type="date" value="2026-10-17"></label><label>Ora<input id="time" type="time" value="20:30"></label><label>Persone<input id="people" type="number" min="1" value="4"></label><label class="full">Note<textarea id="note" placeholder="Compleanno, richieste..."></textarea></label></div><div class="actions"><button class="action" onclick="newRes()">Invia richiesta</button></div></section><section class="panel"><h2>Le mie prenotazioni</h2>'+(mine.length?mine.map(card).join(''):'<p class="muted">Nessuna prenotazione.</p>')+'</section></div>'}
+function card(r){return '<div class="row"><div class="rowtop"><div><b>'+esc(r.date)+' · '+esc(r.time)+'</b><div class="muted">'+esc(r.people)+' persone · '+esc(r.note||'Nessuna nota')+'</div></div><span class="status">'+esc(r.status)+'</span></div>'+(Number(r.people)>=8?'<div class="actions"><button class="action" onclick="preorder(\''+esc(r.id)+'\')">Preparare il pre-ordine</button></div>':'')+'</div>'}
+function newRes(){state.reservations.unshift({id:'LS-'+String(Date.now()).slice(-6),name:document.getElementById('name').value,phone:document.getElementById('phone').value,date:document.getElementById('date').value,time:document.getElementById('time').value,people:Number(document.getElementById('people').value),note:document.getElementById('note').value,status:'In attesa'});save();client()}
+function preorder(id){var r=state.reservations.find(function(x){return x.id===id});if(!r)return;var foods=['Margherita','Diavola','Bresaola','La Sosta','Fettuccine al ragù','Spaghetti alla carbonara','Spaghetti allo scoglio','Tagliata di vitello','Fritto La Sosta','Patatine fritte','Tiramisù'];app.innerHTML='<p class="eyebrow">PRE-ORDINE · GRUPPO</p><h1>'+esc(r.people)+' persone.</h1><p class="muted">Prenotazione '+esc(r.date)+' · '+esc(r.time)+' · '+esc(r.id)+'</p>'+tabs('client')+'<section class="panel"><div class="alert"><b>Importante:</b> questo è un pre-ordine. La comanda definitiva viene confermata al vostro arrivo.</div>'+foods.map(function(f){return '<div class="qtyrow"><div><b>'+f+'</b></div><div class="qty"><button onclick="q(this,-1)">−</button><b>0</b><button onclick="q(this,1)">+</button></div></div>'}).join('')+'<div class="form" style="margin-top:22px"><label class="full">Osservazioni<textarea id="ponote" placeholder="Es.: 2 vegetariani, 1 persona senza frutti di mare..."></textarea></label></div><div class="actions"><button class="action" onclick="sendPre(\''+esc(r.id)+'\')">Invia pre-ordine</button><button class="action ghost" onclick="client()">Annulla</button></div></section>'}
+function q(btn,d){var b=btn.parentElement.querySelector('b');b.textContent=Math.max(0,Number(b.textContent)+d)}
+function sendPre(id){var r=state.reservations.find(function(x){return x.id===id});var a=[];document.querySelectorAll('.qtyrow').forEach(function(row){var n=Number(row.querySelector('.qty b').textContent);if(n)a.push(n+'× '+row.querySelector('div b').textContent)});r.preorder=a.join(', ')||'Nessun articolo selezionato';r.preorderNote=document.getElementById('ponote').value;r.preorderStatus='Ricevuto';save();client()}
+function admin(){state.role='admin';save();var all=state.reservations,p=all.filter(function(r){return r.preorderStatus==='Ricevuto'}).length,g=all.filter(function(r){return Number(r.people)>=8}).length;app.innerHTML='<p class="eyebrow">AREA RISTORANTE · DEMO</p><h1>Buonasera, La Sosta.</h1><p class="muted">Dashboard di prova per prenotazioni e pre-ordini.</p>'+tabs('admin')+'<div class="kpis"><div class="kpi"><b>'+all.length+'</b><span>Prenotazioni</span></div><div class="kpi"><b>'+g+'</b><span>Gruppi</span></div><div class="kpi"><b>'+p+'</b><span>Pre-ordini nuovi</span></div><div class="kpi"><b>'+all.filter(function(r){return r.status==='Confermata'}).length+'</b><span>Confermate</span></div></div><section class="panel"><h2>Agenda & pre-ordini</h2>'+(all.length?all.map(function(r){return '<div class="row"><div class="rowtop"><div><h3>'+esc(r.name)+'</h3><b>'+esc(r.date)+' · '+esc(r.time)+' · '+esc(r.people)+' persone</b><div class="muted">'+esc(r.phone)+' · '+esc(r.note||'')+'</div></div><span class="status">'+esc(r.preorderStatus||r.status)+'</span></div>'+(r.preorder?'<p class="muted"><b>Pre-ordine:</b> '+esc(r.preorder)+'</p>':'<p class="muted"><b>Pre-ordine:</b> non ancora inviato</p>')+(r.preorderNote?'<p class="muted"><b>Note cucina:</b> '+esc(r.preorderNote)+'</p>':'')+'<div class="actions">'+(r.preorder?'<button class="action" onclick="confirmPre(\''+esc(r.id)+'\')">Conferma ricezione</button>':'')+'<button class="action ghost" onclick="confirmRes(\''+esc(r.id)+'\')">Conferma prenotazione</button></div></div>'}).join(''):'<p class="muted">Nessun dato.</p>')+'</section>'}
+function confirmPre(id){var r=state.reservations.find(function(x){return x.id===id});if(r){r.preorderStatus='Confermato';save();admin()}}
+function confirmRes(id){var r=state.reservations.find(function(x){return x.id===id});if(r){r.status='Confermata';save();admin()}}
+function logout(){state.role=null;save();home()}
+window.client=client;window.admin=admin;window.logout=logout;window.newRes=newRes;window.preorder=preorder;window.q=q;window.sendPre=sendPre;window.confirmPre=confirmPre;window.confirmRes=confirmRes;
+if(state.role==='client')client();else if(state.role==='admin')admin();else home();
+})();
+</script>
 </body>
 </html>
