@@ -176,3 +176,9 @@ background-size:auto,34px 34px,34px 34px}
   .desktop-nav.open a{padding:10px 8px 11px;font-size:11px}
   html{scroll-padding-top:125px}
 }
+
+
+/* Homepage: one clear menu action instead of repeating the same link on every card */
+.why-menu-cta{display:flex;justify-content:center;margin-top:30px}
+.why-menu-cta .btn{min-width:220px}
+@media(max-width:520px){.why-menu-cta{margin-top:22px}.why-menu-cta .btn{width:100%}}
