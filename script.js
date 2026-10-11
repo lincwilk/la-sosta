@@ -9,16 +9,29 @@ hamburger:["Panino Cheeseburger","Panino La Sosta","Panino La Svolta"],
 contorni:["Insalata verde","Insalata mista","Patatine* fritte","Spinaci* al burro / lessi","Zucchine fritte","Verdure grigliate"],
 dolci:["Sorbetto al limone","Tartufo bianco o nero","Dolci della casa","Altri dolci della casa"],
 vini:["Moscato d’Asti DOCG","Erbaluce di Caluso DOCG “Fior di ghiaccio”","Langhe Barbera DOC","Roero Arneis DOCG","Roero Arneis DOCG","Prosecco di Treviso Rosato","Kreos Rosato Salento IGT","Prosecco DOCG Superiore Extra Dry","Muller Thurgau Trentino DOC","Pecorino DOC Offida “Veronica”","Falanghina Taburno DOC","Greco Sannio DOC","Kikè Sicilia IGT","Gewürztraminer DOC","Pinot Nero Trentino DOC","Ruché di Castagnole Monf. to “La Tradizione”","Nebbiolo d’Alba SUP. “Cianin da Stiva”"]};
-function render(cat){document.querySelectorAll('.menu-tabs button').forEach(b=>{const active=b.dataset.cat===cat;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));});const list=menus[cat].slice().sort((a,b)=>{const o=menuOrder[cat]||[];return (o.indexOf(a[0])<0?999:o.indexOf(a[0]))-(o.indexOf(b[0])<0?999:o.indexOf(b[0]));});document.getElementById('menu-grid').innerHTML=list.map(([n,d,p])=>'<article class="menu-item"><div><h3>'+n+'</h3>'+(d?'<p>'+d+'</p>':'')+'</div><div class="price">€ '+p+'</div></article>').join('')}document.querySelectorAll('.menu-tabs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.cat)));render('pizze');document.getElementById('year').textContent=new Date().getFullYear();const menuToggle=document.querySelector('.menu-toggle');
+function render(cat){
+ const grid=document.getElementById('menu-grid');
+ if(!grid||!menus[cat])return;
+ document.querySelectorAll('.menu-tabs button').forEach(b=>{const active=b.dataset.cat===cat;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));});
+ const list=menus[cat].slice().sort((a,b)=>{const o=menuOrder[cat]||[];return (o.indexOf(a[0])<0?999:o.indexOf(a[0]))-(o.indexOf(b[0])<0?999:o.indexOf(b[0]));});
+ grid.innerHTML=list.map(([n,d,p])=>'<article class="menu-item"><div><h3>'+n+'</h3>'+(d?'<p>'+d+'</p>':'')+'</div><div class="price">€ '+p+'</div></article>').join('');
+}
+document.querySelectorAll('.menu-tabs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.cat)));
+if(document.getElementById('menu-grid'))render('pizze');
+const yearElement=document.getElementById('year');
+if(yearElement)yearElement.textContent=new Date().getFullYear();
+const menuToggle=document.querySelector('.menu-toggle');
 const mobileNav=document.querySelector('.desktop-nav');
-menuToggle.addEventListener('click',()=>{
- const open=mobileNav.classList.toggle('open');
- menuToggle.setAttribute('aria-expanded',String(open));
-});
-mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
- mobileNav.classList.remove('open');
- menuToggle.setAttribute('aria-expanded','false');
-}));
+if(menuToggle&&mobileNav){
+ menuToggle.addEventListener('click',()=>{
+  const open=mobileNav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded',String(open));
+ });
+ mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  mobileNav.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded','false');
+ }));
+}
 const langData={
 it:{
 food_eyebrow:"DALLA CUCINA",sea_eyebrow:"SPECIALITÀ DI MARE",why_eyebrow:"PERCHÉ LA SOSTA",menu_eyebrow:"IL MENU",location_eyebrow:"DOVE SIAMO",nav_menu:"Menu",nav_about:"La Sosta",nav_location:"Dove siamo",nav_contact:"Contatti",book_phone:"Prenota · 0121 462082",
@@ -110,6 +123,7 @@ function localizeItem(item){
 }
 const originalRender=render;
 render=function(cat){
+  if(!document.getElementById('menu-grid'))return;
  document.querySelectorAll('.menu-tabs button').forEach(b=>{const active=b.dataset.cat===cat;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));const key='tab_'+cat;if(menuLabels[activeLang]&&b.dataset.cat===cat)b.textContent=menuLabels[activeLang][cat]||b.textContent;});
  const list=menus[cat].slice().sort((a,b)=>{const o=menuOrder[cat]||[];return (o.indexOf(a[0])<0?999:o.indexOf(a[0]))-(o.indexOf(b[0])<0?999:o.indexOf(b[0]));});
  document.getElementById('menu-grid').innerHTML=list.map(item=>{const [n,d,p]=localizeItem(item);return '<article class="menu-item"><div><h3>'+n+'</h3>'+(d?'<p>'+d+'</p>':'')+'</div><div class="price">€ '+p+'</div></article>'}).join('');
@@ -173,11 +187,13 @@ function filterMenu(list){
 }
 const oldRenderForEnhance=render;
 render=function(cat){
+  if(!document.getElementById('menu-grid'))return;
  document.querySelectorAll('.menu-tabs button').forEach(b=>{const active=b.dataset.cat===cat;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));});
  const raw=(menus[cat]||[]).slice().sort((a,b)=>{const o=menuOrder[cat]||[];return (o.indexOf(a[0])<0?999:o.indexOf(a[0]))-(o.indexOf(b[0])<0?999:o.indexOf(b[0]));});
  const list=filterMenu(raw);
  const grid=document.getElementById('menu-grid');
- if(!list.length){grid.innerHTML='<div class="menu-empty">'+(langData[activeLang]?.menu_empty||'Nessun risultato. Prova con un altro termine.')+'</div>';return;}
+ if(!grid)return;
+  if(!list.length){grid.innerHTML='<div class="menu-empty">'+(langData[activeLang]?.menu_empty||'Nessun risultato. Prova con un altro termine.')+'</div>';return;}
  grid.innerHTML=list.map(item=>{const [n,d,p]=localizeItem(item);return '<article class="menu-item"><div><h3>'+n+'</h3>'+(d?'<p>'+d+'</p>':'')+'</div><div class="price">€ '+p+'</div></article>'}).join('');
 };
 if(menuSearchInput){
@@ -214,9 +230,11 @@ Object.assign(langData.fr,{locale_eyebrow:"LE LIEU",locale_title:"Un endroit<br>
 Object.assign(langData.pl,{locale_eyebrow:"LOKAL",locale_title:"Miejsce<br><em>na wspólny czas.</em>",locale_intro:"Jasne wnętrza, stoły dla grup oraz kuchnia z pizzą, mięsem i specjałami z morza.",locale_sala:"Sala restauracyjna",locale_grigliata:"Grillowane ryby"});
 applyLanguage(activeLang);
 
+Object.assign(langData.pt,{locale_eyebrow:"O ESPAÇO",locale_title:"Um lugar<br><em>para estar juntos.</em>",locale_intro:"Espaços luminosos e mesas ideais para estar à conversa com família e amigos.",locale_sala:"A sala",locale_grigliata:"Grelhado de peixe"});
 Object.assign(langData.it,{why_label_food:"DALLA CUCINA",why_label_food2:"TRADIZIONE",why_label_sea:"SPECIALITÀ",why_label_space:"IL LOCALE",why_cta:"Scopri il menu →",why_cta_space:"Vedi il locale →"});
 Object.assign(langData.en,{why_label_food:"FROM THE KITCHEN",why_label_food2:"TRADITION",why_label_sea:"SPECIALTIES",why_label_space:"THE VENUE",why_cta:"Explore the menu →",why_cta_space:"See the venue →"});
 Object.assign(langData.fr,{why_label_food:"EN CUISINE",why_label_food2:"TRADITION",why_label_sea:"SPÉCIALITÉS",why_label_space:"LE LIEU",why_cta:"Voir le menu →",why_cta_space:"Voir le lieu →"});
+Object.assign(langData.pt,{why_label_food:"DA COZINHA",why_label_food2:"TRADIÇÃO",why_label_sea:"ESPECIALIDADES",why_label_space:"O ESPAÇO",why_cta:"Ver o menu →",why_cta_space:"Ver o espaço →"});
 Object.assign(langData.pl,{why_label_food:"Z KUCHNI",why_label_food2:"TRADYCJA",why_label_sea:"SPECJAŁY",why_label_space:"LOKAL",why_cta:"Zobacz menu →",why_cta_space:"Zobacz lokal →"});
 applyLanguage(activeLang);
 
@@ -224,6 +242,7 @@ applyLanguage(activeLang);
 Object.assign(langData.it,{dish_eyebrow:"DALLA CUCINA",dish_title:"Una cucina<br><em>da scoprire.</em>",dish_intro:"Dai primi alla tagliata, alcune proposte da vedere da vicino."});
 Object.assign(langData.en,{dish_eyebrow:"FROM THE KITCHEN",dish_title:"A kitchen<br><em>to discover.</em>",dish_intro:"Meat, seafood and house dishes: a selection that lets you explore the menu with your eyes too."});
 Object.assign(langData.fr,{dish_eyebrow:"DEPUIS LA CUISINE",dish_title:"Une cuisine<br><em>à découvrir.</em>",dish_intro:"Viandes, poissons et plats maison : une sélection qui vous permet aussi de découvrir le menu avec les yeux."});
+Object.assign(langData.pt,{dish_eyebrow:"DA COZINHA",dish_title:"Uma cozinha<br><em>por descobrir.</em>",dish_intro:"Das massas à tagliata de vitela, veja de perto algumas sugestões da cozinha."});
 Object.assign(langData.pl,{dish_eyebrow:"Z KUCHNI",dish_title:"Kuchnia<br><em>do odkrycia.</em>",dish_intro:"Mięsa, ryby i dania domu: wybór, który pozwala odkrywać menu także oczami."});
 applyLanguage(activeLang);
 Object.assign(langData.it,{sea_text:"Dal polpo alla griglia ai fritti e alle paste di mare, una parte importante della nostra carta.",sea_text2:"Cozze, vongole e gamberi portano i sapori del mare anche nei nostri primi piatti."});
