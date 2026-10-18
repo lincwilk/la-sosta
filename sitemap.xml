@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://lincwilk.github.io/la-sosta/</loc></url>
+  <url>
+    <loc>https://lincwilk.github.io/la-sosta/</loc>
+  </url>
+  <url>
+    <loc>https://lincwilk.github.io/la-sosta/menu.html</loc>
+  </url>
+  <url>
+    <loc>https://lincwilk.github.io/la-sosta/locale.html</loc>
+  </url>
+  <url>
+    <loc>https://lincwilk.github.io/la-sosta/contatti.html</loc>
+  </url>
 </urlset>
