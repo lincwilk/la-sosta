@@ -228,39 +228,25 @@ Object.assign(langData.it,{locale_eyebrow:"IL LOCALE",locale_title:"Un posto<br>
 Object.assign(langData.en,{locale_eyebrow:"THE VENUE",locale_title:"A place<br><em>to gather.</em>",locale_intro:"Bright spaces, tables for groups and a kitchen serving pizza, meat and seafood specialties.",locale_sala:"The dining room",locale_grigliata:"Grilled seafood"});
 Object.assign(langData.fr,{locale_eyebrow:"LE LIEU",locale_title:"Un endroit<br><em>pour se retrouver.</em>",locale_intro:"Des espaces lumineux, des tables pour les groupes et une cuisine de pizzas, viandes et spécialités de la mer.",locale_sala:"La salle",locale_grigliata:"Grillade de poisson"});
 Object.assign(langData.pl,{locale_eyebrow:"LOKAL",locale_title:"Miejsce<br><em>na wspólny czas.</em>",locale_intro:"Jasne wnętrza, stoły dla grup oraz kuchnia z pizzą, mięsem i specjałami z morza.",locale_sala:"Sala restauracyjna",locale_grigliata:"Grillowane ryby"});
-applyLanguage(activeLang);
-
 Object.assign(langData.pt,{locale_eyebrow:"O ESPAÇO",locale_title:"Um lugar<br><em>para estar juntos.</em>",locale_intro:"Espaços luminosos e mesas ideais para estar à conversa com família e amigos.",locale_sala:"A sala",locale_grigliata:"Grelhado de peixe"});
 Object.assign(langData.it,{why_label_food:"DALLA CUCINA",why_label_food2:"TRADIZIONE",why_label_sea:"SPECIALITÀ",why_label_space:"IL LOCALE",why_cta:"Scopri il menu →",why_cta_space:"Vedi il locale →"});
 Object.assign(langData.en,{why_label_food:"FROM THE KITCHEN",why_label_food2:"TRADITION",why_label_sea:"SPECIALTIES",why_label_space:"THE VENUE",why_cta:"Explore the menu →",why_cta_space:"See the venue →"});
 Object.assign(langData.fr,{why_label_food:"EN CUISINE",why_label_food2:"TRADITION",why_label_sea:"SPÉCIALITÉS",why_label_space:"LE LIEU",why_cta:"Voir le menu →",why_cta_space:"Voir le lieu →"});
 Object.assign(langData.pt,{why_label_food:"DA COZINHA",why_label_food2:"TRADIÇÃO",why_label_sea:"ESPECIALIDADES",why_label_space:"O ESPAÇO",why_cta:"Ver o menu →",why_cta_space:"Ver o espaço →"});
 Object.assign(langData.pl,{why_label_food:"Z KUCHNI",why_label_food2:"TRADYCJA",why_label_sea:"SPECJAŁY",why_label_space:"LOKAL",why_cta:"Zobacz menu →",why_cta_space:"Zobacz lokal →"});
-applyLanguage(activeLang);
-
-
 Object.assign(langData.it,{dish_eyebrow:"DALLA CUCINA",dish_title:"Una cucina<br><em>da scoprire.</em>",dish_intro:"Dai primi alla tagliata, alcune proposte da vedere da vicino."});
 Object.assign(langData.en,{dish_eyebrow:"FROM THE KITCHEN",dish_title:"A kitchen<br><em>to discover.</em>",dish_intro:"Meat, seafood and house dishes: a selection that lets you explore the menu with your eyes too."});
 Object.assign(langData.fr,{dish_eyebrow:"DEPUIS LA CUISINE",dish_title:"Une cuisine<br><em>à découvrir.</em>",dish_intro:"Viandes, poissons et plats maison : une sélection qui vous permet aussi de découvrir le menu avec les yeux."});
 Object.assign(langData.pt,{dish_eyebrow:"DA COZINHA",dish_title:"Uma cozinha<br><em>por descobrir.</em>",dish_intro:"Das massas à tagliata de vitela, veja de perto algumas sugestões da cozinha."});
 Object.assign(langData.pl,{dish_eyebrow:"Z KUCHNI",dish_title:"Kuchnia<br><em>do odkrycia.</em>",dish_intro:"Mięsa, ryby i dania domu: wybór, który pozwala odkrywać menu także oczami."});
-applyLanguage(activeLang);
-Object.assign(langData.it,{sea_text:"Dal polpo alla griglia ai fritti e alle paste di mare, una parte importante della nostra carta.",sea_text2:"Cozze, vongole e gamberi portano i sapori del mare anche nei nostri primi piatti."});
-Object.assign(langData.en,{sea_text:"From grilled octopus to fried seafood and seafood pasta, an important part of our menu.",sea_text2:"Mussels, clams and prawns bring the flavours of the sea to our pasta dishes too."});
-Object.assign(langData.fr,{sea_text:"Du poulpe grillé aux fritures et aux pâtes de la mer, une part importante de notre carte.",sea_text2:"Moules, palourdes et crevettes apportent les saveurs de la mer jusque dans nos plats de pâtes."});
-Object.assign(langData.pl,{sea_text:"Od grillowanej ośmiornicy po smażone owoce morza i makarony z rybami, to ważna część naszej karty.",sea_text2:"Małże, vongole i krewetki przenoszą smaki morza także do naszych dań z makaronem."});
-applyLanguage(activeLang);
-
-
 Object.assign(langData.it,{sea_text:"Dal polpo alla griglia ai fritti di mare, il pesce è una presenza importante sulla nostra carta.",sea_text2:"Cozze, vongole e gamberi portano i sapori del mare anche nei nostri primi piatti."});
 Object.assign(langData.en,{sea_text:"From grilled octopus to fried seafood, fish has an important place on our menu.",sea_text2:"Mussels, clams and prawns bring the flavours of the sea to our pasta dishes."});
 Object.assign(langData.fr,{sea_text:"Du poulpe grillé aux fritures de la mer, le poisson occupe une place importante sur notre carte.",sea_text2:"Moules, palourdes et crevettes apportent les saveurs de la mer jusque dans nos plats de pâtes."});
 Object.assign(langData.pl,{sea_text:"Od grillowanej ośmiornicy po smażone owoce morza — ryby zajmują ważne miejsce w naszej karcie.",sea_text2:"Małże, vongole i krewetki przenoszą smaki morza także do naszych dań z makaronem."});
-applyLanguage(activeLang);
-
 menuTranslations.pt={
 "Margherita":["Margherita","tomate, mozzarella"],"Marinara":["Marinara","tomate, alho, salsa e orégãos"],"Napoli":["Napoli","tomate, mozzarella e anchovas"],"Diavola":["Diavola","tomate, mozzarella e salame picante"],"Bresaola":["Bresaola","tomate, mozzarella, bresaola, rúcula e lascas de parmesão"],"Bismarck":["Bismarck","tomate, mozzarella, fiambre, ovo"],"Bufala":["Bufala","tomate e mozzarella de búfala"],"Funghi":["Cogumelos","tomate, mozzarella e cogumelos"],"Prosciutto":["Fiambre","tomate, mozzarella e fiambre"],"Prosciutto e funghi":["Fiambre e cogumelos","tomate, mozzarella, fiambre e cogumelos"],"Tonno":["Atum","tomate, mozzarella e atum"],"Salsiccia":["Salsicha italiana","tomate, mozzarella e salsicha"],"Vegetariana":["Vegetariana","tomate, mozzarella e legumes da época"],"Würstel":["Würstel","tomate, mozzarella e salsicha tipo Frankfurt"],
 "Fettuccine al ragù":["Fettuccine com ragù",""],"Trofie fresche al ligure":["Trofie à ligur","pesto de manjericão, batata e feijão-verde"],"Spaghetti alla carbonara":["Esparguete à carbonara",""],"Trenette alle cozze":["Trenette com mexilhões",""],"Spaghetti allo scoglio*":["Esparguete com frutos do mar*",""],"Linguine alla tarantina":["Linguine à tarantina","mexilhões, amêijoas, camarões* e tomate fresco"],"Paella di pesce*":["Paelha de peixe*","mínimo 4 pessoas, por reserva"],
 "Insalata verde":["Salada verde",""],"Insalata mista":["Salada mista",""],"Patatine* fritte":["Batatas fritas*",""],"Verdure grigliate":["Legumes grelhados",""],"Sorbetto al limone":["Sorvete de limão",""],"Tartufo bianco o nero":["Tartufo branco ou preto",""],"Dolci della casa":["Sobremesas da casa","Meringata, Bunet, Tiramisù, panna cotta, profiteroles"]
 };
+
 applyLanguage(activeLang);
